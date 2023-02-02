@@ -26,14 +26,14 @@ where location like '%states%'
 order by 1,2
 
 --Looking at Total cases vs Population
---Percent of the population of counctires who contracted covid
+--Percent of the population in countries who contracted covid
 select location, date, population, total_cases, (total_cases / population) * 100 as PercentOfCases
 from PortfolioProject..CovidDeaths$
 where location like '%states%'
 order by 1,2
 
 
---find countries with the highest cases compared to the population 
+--Find countries with the highest cases compared to the population 
 
 select location, population, max(total_cases) as MostCases, max((total_cases / population)) * 100 as PercentOfPopulationInfected
 from PortfolioProject..CovidDeaths$
