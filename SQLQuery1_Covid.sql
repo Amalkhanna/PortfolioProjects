@@ -16,7 +16,7 @@ order by 3,4
 select location, date, total_cases, total_deaths
 from PortfolioProject..CovidDeaths$
 order by 1,2
-
+---------------------------------------------------------------------------------------------------------------------------------------------
 --Looking at Total cases vs Total Deaths 
 --Shows the likelyhood of dying if you have covid in your country
 
@@ -25,6 +25,8 @@ from PortfolioProject..CovidDeaths$
 where location like '%states%'
 order by 1,2
 
+
+---------------------------------------------------------------------------------------------------------------------------------------------
 --Looking at Total cases vs Population
 --Percent of the population in countries who contracted covid
 select location, date, population, total_cases, (total_cases / population) * 100 as PercentOfCases
@@ -32,6 +34,7 @@ from PortfolioProject..CovidDeaths$
 where location like '%states%'
 order by 1,2
 
+---------------------------------------------------------------------------------------------------------------------------------------------
 
 --Find countries with the highest cases compared to the population 
 
@@ -42,6 +45,8 @@ from PortfolioProject..CovidDeaths$
 group by location, population
 order by PercentOfPopulationInfected desc
 
+---------------------------------------------------------------------------------------------------------------------------------------------
+
 --Find countries with the most deaths compared to the population 
 
 select location, population, max(cast(total_deaths as int)) as DesceasedTotal, max((total_deaths / population)) * 100 as PercentofThoseWhoDied
@@ -50,6 +55,8 @@ where continent is not null
 group by location, population
 Order by PercentofThoseWhoDied desc
 
+---------------------------------------------------------------------------------------------------------------------------------------------
+
 --Finding the continents with the highest death counts 
 
 select location, max(cast(total_deaths as int)) as DesceasedTotal
@@ -57,6 +64,8 @@ from PortfolioProject..CovidDeaths$
 where continent is null
 group by location
 order by DesceasedTotal desc
+
+---------------------------------------------------------------------------------------------------------------------------------------------
 
 --Find the total world cases and deaths data
 
@@ -67,7 +76,7 @@ where continent is not null
 --group by date
 order by 1,2
 
-
+---------------------------------------------------------------------------------------------------------------------------------------------
 
 --Looking for Total Population vs Vaccinations 
 
@@ -130,7 +139,7 @@ where dea.continent is not null
 select *, (IncrementingPeopleVaccinated/population)*100
 from #PercentPopulationVaccinated
 
-
+---------------------------------------------------------------------------------------------------------------------------------------------
 
 --Creating a view to store data for data visualization
 
